@@ -9,16 +9,19 @@ def smtp_enum(host, port, wordlist):
         print(f"Wordlist file '{wordlist}' not found.")
         return
 
-    #goes through each user in the list, uses the VRFY command to see if the user is found, uses specific 252,250 code to verify this. 
     for user in users:
         user = user.strip()
         try:
             tn = telnetlib.Telnet(host, port)
-            tn.read_until(b"220")
-            tn.write(f"VRFY {user}\r\n".encode('ascii'))
-            response = tn.read_until(b"\r\n").decode('ascii')
+            tn.read_until(b"\n")  # Read and discard the initial banner
+            tn.write(b"HELO example.com\r\n")  # Send HELO command
+            tn.read_until(b"\n")  # Read and discard the response to HELO
+            tn.write(f"VRFY {user}\r\n".encode('ascii'))  # Send VRFY command
+            response = tn.read_until(b"\n").decode('ascii')  # Read the response to VRFY
             tn.close()
-            if "252" in response or "250" in response:
+            print(response)
+            # Check for specific response codes
+            if response.startswith("252") or response.startswith("250"):
                 print(f"User found: {user}")
             else:
                 print(f"User not found: {user}")
