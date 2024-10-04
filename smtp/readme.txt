@@ -1,0 +1,5 @@
+Easy smtp enumeration script, need a user lsit, easiest to ahve in same directory as python script.
+
+run command ---> pentester$ ./enum_smtp.py <ip> <port> <wordlist>
+
+Output will say if a user is found or is not found.
