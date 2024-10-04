@@ -9,6 +9,7 @@ def smtp_enum(host, port, wordlist):
         print(f"Wordlist file '{wordlist}' not found.")
         return
 
+    #goes through each user in the list, uses the VRFY command to see if the user is found, uses specific 252,250 code to verify this. 
     for user in users:
         user = user.strip()
         try:
