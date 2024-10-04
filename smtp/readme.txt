@@ -19,3 +19,4 @@ Thanks to HTB for the inspiration to make this script in there host enumeration 
 
 TODO:
 Telnetlib is being depreciated, need to fix/replace
+move to argparser maybe if features etc are required.
