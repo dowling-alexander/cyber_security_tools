@@ -1,5 +1,9 @@
 Easy smtp enumeration script, need a user list, easiest to have in same directory as python script.
 
+For an explanation of SMTP codes:
+https://serversmtp.com/smtp-error/
+explains why 250 and 252 are the correct responses.
+
 ===========================================================================================
 run command ---> pentester$ ./enum_smtp.py <ip> <port> <wordlist>
 550 5.1.1 <james>: Recipient address rejected: User unknown in local recipient table
